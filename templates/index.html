@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Placement Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo-box">PP</div>
+            <span class="brand-name">PlacementPredict</span>
+        </div>
+
+        <div class="nav-right">
+            <a href="#">Home</a>
+            <a href="#">Predict</a>
+            <a href="#">About</a>
+        </div>
+    </nav>
+
+    <!-- ===== Main Section ===== -->
+    <div class="container">
+        <h1>Student Placement Prediction</h1>
+
+        <form action="/predict" method="POST" class="form-box">
+            <label>CGPA</label>
+            <input type="number" name="cgpa" step="0.01" required>
+
+            <label>Internships</label>
+            <input type="number" name="internships" required>
+
+            <label>Projects</label>
+            <input type="number" name="projects" required>
+
+            <label>Workshops</label>
+            <input type="number" name="workshops" required>
+
+            <label>Certifications</label>
+            <input type="number" name="certifications" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                Prediction: <strong>{{ prediction }}</strong>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
